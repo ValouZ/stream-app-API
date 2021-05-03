@@ -21,7 +21,7 @@ router.delete("/:id", async (req, res, next) => {
   res.json(await mongoose.model("User").findByIdAndRemove(req.params.id));
 });
 
-router.delete("/:id", async (req, res, next) => {
+router.get("/:id", async (req, res, next) => {
   res.json(await mongoose.model("User").findById(req.params.id));
 });
 
