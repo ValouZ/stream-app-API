@@ -13,7 +13,7 @@ router.get("/", auth, userController.getAllUsers);
 /* POST users listing. 
 http://localhost:8080/users/create
 */
-router.post("/create", auth, userController.createUser);
+router.post("/create", userController.createUser);
 
 // router.put("/", async (req, res, next) => {
 //   res.json(
