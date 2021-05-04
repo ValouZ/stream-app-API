@@ -3,16 +3,17 @@ var router = express.Router();
 var mongoose = require("mongoose");
 
 var userController = require("../controllers/userControllers");
+var auth = require("../middleware/auth");
 
 /* GET users listing. 
 http://localhost:8080/users
 */
-router.get("/", userController.getAllUsers);
+router.get("/", auth, userController.getAllUsers);
 
 /* POST users listing. 
 http://localhost:8080/users/create
 */
-router.post("/create", userController.createUser);
+router.post("/create", auth, userController.createUser);
 
 // router.put("/", async (req, res, next) => {
 //   res.json(
@@ -23,17 +24,17 @@ router.post("/create", userController.createUser);
 /* PUT users listing. 
 http://localhost:8080/users/update
 */
-router.put("/update", userController.updateUser);
+router.put("/update", auth, userController.updateUser);
 
 /* DELETE users listing. 
 http://localhost:8080/users/delete/:id
 */
-router.delete("/delete/:id", userController.deleteUser);
+router.delete("/delete/:id", auth, userController.deleteUser);
 
 /* GET users listing. 
 http://localhost:8080/users/:id
 */
-router.get("/:id", userController.getUser);
+router.get("/:id", auth, userController.getUser);
 
 router.post("/login", userController.login);
 

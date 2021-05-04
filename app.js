@@ -4,18 +4,23 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
+var cors = require("cors");
 
 // S'assurer que la classe USER ai bien été chargé
 require("./models/User");
 
-mongoose.connect('mongodb+srv://fanny34:Fanny34@cluster0.bhd1t.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
-.then(() => {
-    console.log('connexion ok');
+mongoose
+  .connect(
+    "mongodb+srv://fanny34:Fanny34@cluster0.bhd1t.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    { useNewUrlParser: true, useUnifiedTopology: true }
+  )
+  .then(() => {
+    console.log("connexion ok");
     app.listen(3000);
-})
-.catch(e => {
-    console.log(e)
-})
+  })
+  .catch((e) => {
+    console.log(e);
+  });
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
@@ -26,6 +31,7 @@ var app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
 
+app.use(cors());
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
