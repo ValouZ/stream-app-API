@@ -8,7 +8,14 @@ var mongoose = require("mongoose");
 // S'assurer que la classe USER ai bien été chargé
 require("./models/User");
 
-mongoose.connect("mongodb://localhost/node-express-test");
+mongoose.connect('mongodb+srv://fanny34:Fanny34@cluster0.bhd1t.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
+.then(() => {
+    console.log('connexion ok');
+    app.listen(3000);
+})
+.catch(e => {
+    console.log(e)
+})
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
