@@ -7,12 +7,4 @@ var User = mongoose.model('user', new Schema({
   role: {type: String},
 }));
 
-// UserSchema.methods.comparePassWord = function (enteredPassword, callback) {
-//   if (enteredPassword == this.password) {
-//     callback(null, true);
-//   } else {
-//     callback(null, false);
-//   }
-// };
-
 module.exports = User;
