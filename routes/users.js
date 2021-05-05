@@ -2,27 +2,40 @@ var express = require("express");
 var router = express.Router();
 var mongoose = require("mongoose");
 
-/* GET users listing. */
-router.get("/", async (req, res, next) => {
-  res.json(await mongoose.model("User").find({}));
-});
+var userController = require("../controllers/userControllers");
+var auth = require("../middleware/auth");
 
-router.post("/", async (req, res, next) => {
-  res.json(await mongoose.model("User").create(req.body));
-});
+/* GET users listing. 
+http://localhost:8080/users
+*/
+router.get("/", auth, userController.getAllUsers);
 
-router.put("/", async (req, res, next) => {
-  res.json(
-    await mongoose.model("User").findByIdAndUpdate(req.params.id, req.body)
-  );
-});
+/* POST users listing. 
+http://localhost:8080/users/create
+*/
+router.post("/create", userController.createUser);
 
-router.delete("/:id", async (req, res, next) => {
-  res.json(await mongoose.model("User").findByIdAndRemove(req.params.id));
-});
+// router.put("/", async (req, res, next) => {
+//   res.json(
+//     await mongoose.model("User").findByIdAndUpdate(req.params.id, req.body)
+//   );
+// });
 
-router.get("/:id", async (req, res, next) => {
-  res.json(await mongoose.model("User").findById(req.params.id));
-});
+/* PUT users listing. 
+http://localhost:8080/users/update
+*/
+router.put("/update", auth, userController.updateUser);
+
+/* DELETE users listing. 
+http://localhost:8080/users/delete/:id
+*/
+router.delete("/delete/:id", userController.deleteUser);
+
+/* GET users listing. 
+http://localhost:8080/users/:id
+*/
+router.get("/:id", auth, userController.getUser);
+
+router.post("/login", userController.login);
 
 module.exports = router;
