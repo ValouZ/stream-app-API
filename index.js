@@ -78,7 +78,13 @@ app.set("port", port);
  */
 
 var server = http.createServer(app);
-var io = require("socket.io")(server);
+var io = require("socket.io")(server, {
+  cors: {
+    origin: true,
+    methods: ["GET", "POST"],
+    credentials: true,
+  },
+});
 
 // res.sendFile(`../public/index.html`)
 // express.get("/", (req, res) => {
@@ -87,18 +93,17 @@ var io = require("socket.io")(server);
 
 // app.use(express.static(path.join(__dirname, "/public/index.html")));
 
-io.on('connection', (socket)=>{
+io.on("connection", (socket) => {
   console.log("un utilisateur connecté !");
 
-  socket.on('disconnect', ()=>{
+  socket.on("disconnect", () => {
     console.log("un utilisateur déconnecté !");
   });
 
-  socket.on('chat message', (msg)=>{
-    console.log(msg);
-    io.emit('chat message', msg);
+  socket.on("chat message", (msgObject) => {
+    console.log(msgObject);
+    io.emit("chat message", msgObject);
   });
-
 });
 
 /**
