@@ -7,6 +7,12 @@ var mongoose = require("mongoose");
 var cors = require("cors");
 var debug = require("debug")("node-express-test:server");
 var http = require("http");
+const {
+  userJoin,
+  getCurrentUSer,
+  userLeave,
+  getRoomUsers,
+} = require("./utils/users");
 
 // S'assurer que la classe USER ai bien été chargé
 require("./models/User");
@@ -86,23 +92,57 @@ var io = require("socket.io")(server, {
   },
 });
 
-// res.sendFile(`../public/index.html`)
-// express.get("/", (req, res) => {
-//   res.sendFile(__dirname + '/public/index.html')
-// });
-
-// app.use(express.static(path.join(__dirname, "/public/index.html")));
+const botName = "Bot";
 
 io.on("connection", (socket) => {
-  console.log("un utilisateur connecté !");
+  console.log("Nouvelle connexion");
 
-  socket.on("disconnect", () => {
-    console.log("un utilisateur déconnecté !");
-  });
+  // Quand on rejoint la room
+  socket.on("joinRoom", ({ id, username, room }) => {
+    const user = userJoin(id, username, room);
 
-  socket.on("chat message", (msgObject) => {
-    console.log(msgObject);
-    io.emit("chat message", msgObject);
+    socket.join(user.room);
+
+    // Message de bienvenue
+    socket.emit("chat message", {
+      username: botName,
+      msg: "Bienvenue sur le live",
+    });
+
+    // Message à tous les users
+    socket.broadcast.to(user.room).emit("chat message", {
+      username: botName,
+      msg: `${user.username} a rejoint le live`,
+    });
+
+    // Envoyer info user et room
+    io.to(user.room).emit("roomUsers", {
+      room: user.room,
+      users: getRoomUsers(user.room),
+    });
+
+    // Réception et envoie du msg
+    socket.on("chat message", (msgObject) => {
+      io.to(user.room).emit("chat message", msgObject);
+    });
+
+    // Deconnexion
+    socket.on("disconnect", () => {
+      const userLeft = userLeave(user.id);
+      if (userLeft) {
+        io.to(user.room).emit("chat message", {
+          username: botName,
+          msg: `${user.username} a quitté le live`,
+        });
+        console.log("Déconnexion !");
+
+        // Envoyer info user et room
+        io.to(user.room).emit("roomUsers", {
+          room: user.room,
+          users: getRoomUsers(user.room),
+        });
+      }
+    });
   });
 });
 
