@@ -98,8 +98,8 @@ io.on("connection", (socket) => {
   console.log("Nouvelle connexion");
 
   // Quand on rejoint la room
-  socket.on("joinRoom", ({ id, username, room }) => {
-    const user = userJoin(id, username, room);
+  socket.on("joinRoom", ({ id, username, room, color }) => {
+    const user = userJoin(id, username, room, color);
 
     socket.join(user.room);
 
@@ -122,8 +122,12 @@ io.on("connection", (socket) => {
     });
 
     // Réception et envoie du msg
-    socket.on("chat message", (msgObject) => {
-      io.to(user.room).emit("chat message", msgObject);
+    socket.on("chat message", (msg) => {
+      io.to(user.room).emit("chat message", {
+        username: user.username,
+        msg: msg,
+        color: user.color,
+      });
     });
 
     // Deconnexion

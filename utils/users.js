@@ -3,11 +3,10 @@ const { UnsupportedMediaType } = require("http-errors");
 const users = [];
 
 // User rejoint le chat
-function userJoin(id, username, room) {
-  const user = { id, username, room };
+function userJoin(id, username, room, color) {
+  const user = { id, username, room, color };
 
-  users.push(user);
-  console.dir(users);
+  users.push(user);;
   return user;
 }
 
