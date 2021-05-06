@@ -115,6 +115,9 @@ io.on("connection", (socket) => {
       msg: `${user.username} a rejoint le live`,
     });
 
+    // On envoie le l'id de l'utilisateur vonnecté
+    socket.broadcast.to(user.room).emit("user-connected", user.id);
+
     // Envoyer info user et room
     io.to(user.room).emit("roomUsers", {
       room: user.room,
