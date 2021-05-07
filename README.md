@@ -18,7 +18,7 @@ Création d'un service de streaming en utilisant les technologies de notre choix
 	- Un chat “real-time” par canal (optionel : où les messages sont persistés en base)
 	- Un utilisateur peut lancer un stream en utilisant le protocol RTSP (Si vous utilisez
 NodeJs je vous conseille Node Media Server)  
-3. **LEVEL 3 => LIVE STREAMING SERVICE AVEC ENCODAGE** (Stream avec encodage en utilisant ffmpeg). 
+3. **LEVEL 3 => LIVE STREAMING SERVICE AVEC ENCODAGE** (Stream avec encodage en utilisant ffmpeg)  
 Création d'un service de streaming en utilisant les technologies de notre choix. L'application devra avoir les fonctionnalités suivantes :
 	- L’enregistrement des utilisateurs
 	- La création de canaux de stream
@@ -73,6 +73,8 @@ Aussi nous avons rencontrés des erreurs au moment ou le premier utilisateur qui
 
 ## Projet en ligne
 
-Nous avons réussi à déployer le projet en ligne. Vous pouvez allez le visiter à cette adresse :  
-[https://stream-app-front.vercel.app/](https://stream-app-front.vercel.app/ "https://stream-app-front.vercel.app/")  
+Nous avons réussi à déployer le projet en ligne. Vous pouvez allez le visiter à cette adresse : 
+
+[https://stream-app-front.vercel.app/](https://stream-app-front.vercel.app/ "https://stream-app-front.vercel.app/")   
+  
 Cependant en ligne nous n'avons pas réussi à lancer le server peers. De ce fait notre vidéo n'est pas envoyé aux autres utilisateurs. Pour tester cette fonctionnalité il faut tester le projet en local.
