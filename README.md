@@ -5,20 +5,20 @@ Vous êtes actuellement sur le projet de stream app de **Valentin Debray**  et *
 ## Les consignes
 
 Réalisation d'un projet “STREAM” en binôme avec la proposition de 3 niveau de réalisation :
-1. **LEVEL 1 => WEB CHAT / STREAM** (Web chat avec visio en websocket)
+1. **LEVEL 1 => WEB CHAT / STREAM** (Web chat avec visio en websocket). 
 Création d'un projet de webchat en utilisant les technologies de notre choix. L'application devra avoir les fonctionnalités suivantes :
 	- L’enregistrement des utilisateurs
 	- La création de canaux de discussion
 	- Un chat “real-time” par canal (optionel : où les messages sont persistés en base)
 	- Lancer des visio par canal en utilisant le RPC et les websockets
-2. **LEVEL 2 => LIVE STREAMING SERVICE** (Stream sans encodage)
+2. **LEVEL 2 => LIVE STREAMING SERVICE** (Stream sans encodage). 
 Création d'un service de streaming en utilisant les technologies de notre choix. L'application devra avoir les fonctionnalités suivantes :
 	- L’enregistrement des utilisateurs
 	- La création de canaux de stream
 	- Un chat “real-time” par canal (optionel : où les messages sont persistés en base)
 	- Un utilisateur peut lancer un stream en utilisant le protocol RTSP (Si vous utilisez
 NodeJs je vous conseille Node Media Server)
-3. **LEVEL 3 => LIVE STREAMING SERVICE AVEC ENCODAGE** (Stream avec encodage en utilisant ffmpeg)
+3. **LEVEL 3 => LIVE STREAMING SERVICE AVEC ENCODAGE** (Stream avec encodage en utilisant ffmpeg). 
 Création d'un service de streaming en utilisant les technologies de notre choix. L'application devra avoir les fonctionnalités suivantes :
 	- L’enregistrement des utilisateurs
 	- La création de canaux de stream
@@ -54,7 +54,7 @@ Dans chaque "room" les utilisateurs uniquement dans cette "room" peuvent communi
 Nous avons réussi à faire en sorte qu'un utilisateur qui se connecte à une room puisse lancer sa vidéo "webcam" de son ordinateur et que celle-ci soit retransmis aux autres utilisateurs présents dans la même room.
 - **Architecture du projet** :
 Nous avons séparés ce projet en 2 : Partie front et Partie back (=notre API). Notre front fait appel à notre API.
-Les deux dépôts sont présents sur git :
+Les deux dépôts sont présents sur git :  
 FRONT : https://github.com/ValouZ/stream-app-front.git
 BACK : https://github.com/ValouZ/stream-app-API.git
 
