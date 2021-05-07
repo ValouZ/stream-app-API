@@ -29,7 +29,7 @@ router.put("/update", auth, userController.updateUser);
 /* DELETE users listing. 
 http://localhost:8080/users/delete/:id
 */
-router.delete("/delete/:id", userController.deleteUser);
+router.delete("/delete/:id", auth, userController.deleteUser);
 
 /* GET users listing. 
 http://localhost:8080/users/:id
