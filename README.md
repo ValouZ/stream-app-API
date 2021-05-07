@@ -45,13 +45,17 @@ Nous avions pour objectifs de partir sur le Projet de niveaux 2. Mais par manque
 1. **LEVEL 1 => WEB CHAT / STREAM** (Web chat avec visio en websocket)
 - **L’enregistrement des utilisateurs :**  
 Nous avons réussi à faire un système d'inscription => l'utilisateur doit entrer un nom et mot de passe que nous stockons en base de donnée Mongodb. En base de donnée on attribue un id à ce nouvel utilisateur et pour son mot de passe on l'enregistre de manière crypté.  
-Nous avons aussi mis en place un système d'authentification des utilisateurs => l'utilisateur entre son nom et son mot de passe et nous vérifions que nous avons un utilisateurs avec ce nom et ce mot de passe qui correspond dans notre base de donnée.
+Nous avons aussi mis en place un système d'authentification des utilisateurs => l'utilisateur entre son nom et son mot de passe et nous vérifions que nous avons un utilisateurs avec ce nom et ce mot de passe qui correspond dans notre base de donnée.  
+
 - **La création de canaux de discussion :**  
-Chacun des utilisateurs peut rejoindre une "room" qui porte le nom d'un des utilisateurs inscrits pour communiquer entre eux. 
+Chacun des utilisateurs peut rejoindre une "room" qui porte le nom d'un des utilisateurs inscrits pour communiquer entre eux.   
+
 - **Un chat “real-time” par canal**   
-Dans chaque "room" les utilisateurs uniquement dans cette "room" peuvent communiquer en temps réels entre eux. Les messages envoyés dans une "room" sont uniquement envoyé dans cette room.
+Dans chaque "room" les utilisateurs uniquement dans cette "room" peuvent communiquer en temps réels entre eux. Les messages envoyés dans une "room" sont uniquement envoyé dans cette room.  
+
 - **Lancer des visio par canal en utilisant le RPC et les websockets**  
-Nous avons réussi à faire en sorte qu'un utilisateur qui se connecte à une room puisse lancer sa vidéo "webcam" de son ordinateur et que celle-ci soit retransmis aux autres utilisateurs présents dans la même room.
+Nous avons réussi à faire en sorte qu'un utilisateur qui se connecte à une room puisse lancer sa vidéo "webcam" de son ordinateur et que celle-ci soit retransmis aux autres utilisateurs présents dans la même room.  
+
 - **Architecture du projet** :  
 Nous avons séparés ce projet en 2 : Partie front et Partie back (=notre API). Notre front fait appel à notre API.
 Les deux dépôts sont présents sur git :  
