@@ -148,6 +148,9 @@ io.on("connection", (socket) => {
           room: user.room,
           users: getRoomUsers(user.room),
         });
+
+        //Quitte le live
+        socket.to(user.room).broadcast.emit("user-disconected", user.id)
       }
     });
   });
