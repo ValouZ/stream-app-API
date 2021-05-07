@@ -150,7 +150,7 @@ io.on("connection", (socket) => {
         });
 
         //Quitte le live
-        socket.to(user.room).broadcast.emit("user-disconected", user.id)
+        io.to(user.room).emit("user-disconected", user.id)
       }
     });
   });
