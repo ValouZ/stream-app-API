@@ -5,13 +5,13 @@ Vous êtes actuellement sur le projet de stream app de **Valentin Debray**  et *
 ## Les consignes
 
 Réalisation d'un projet “STREAM” en binôme avec la proposition de 3 niveau de réalisation :
-1. **LEVEL 1 => WEB CHAT / STREAM** (Web chat avec visio en websocket). 
+1. **LEVEL 1 => WEB CHAT / STREAM** (Web chat avec visio en websocket)  
 Création d'un projet de webchat en utilisant les technologies de notre choix. L'application devra avoir les fonctionnalités suivantes :
 	- L’enregistrement des utilisateurs
 	- La création de canaux de discussion
 	- Un chat “real-time” par canal (optionel : où les messages sont persistés en base)
 	- Lancer des visio par canal en utilisant le RPC et les websockets
-2. **LEVEL 2 => LIVE STREAMING SERVICE** (Stream sans encodage). 
+2. **LEVEL 2 => LIVE STREAMING SERVICE** (Stream sans encodage)  
 Création d'un service de streaming en utilisant les technologies de notre choix. L'application devra avoir les fonctionnalités suivantes :
 	- L’enregistrement des utilisateurs
 	- La création de canaux de stream
